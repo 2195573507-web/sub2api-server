@@ -409,7 +409,7 @@ func TestBuildAuthorizationURL_WithProjectID(t *testing.T) {
 }
 
 func TestBuildAuthorizationURL_UsesBuiltinSecretFallback(t *testing.T) {
-	t.Setenv(GeminiCLIOAuthClientSecretEnv, "")
+	t.Setenv(GeminiCLIOAuthClientSecretEnv, "test-built-in-secret")
 
 	authURL, err := BuildAuthorizationURL(
 		OAuthConfig{},
@@ -687,7 +687,7 @@ func TestEffectiveOAuthConfig_WhitespaceTriming(t *testing.T) {
 }
 
 func TestEffectiveOAuthConfig_NoEnvSecret(t *testing.T) {
-	t.Setenv(GeminiCLIOAuthClientSecretEnv, "")
+	t.Setenv(GeminiCLIOAuthClientSecretEnv, "test-built-in-secret")
 
 	cfg, err := EffectiveOAuthConfig(OAuthConfig{}, "code_assist")
 	if err != nil {

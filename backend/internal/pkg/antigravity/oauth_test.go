@@ -685,6 +685,7 @@ func TestConstants_值正确(t *testing.T) {
 		t.Fatal("getClientSecret should return error: set ANTIGRAVITY_OAUTH_CLIENT_SECRET env var")
 	}
 	_ = secret
+	if RedirectURI != "http://localhost:8085/callback" {
 		t.Errorf("RedirectURI 不匹配: got %s", RedirectURI)
 	}
 	if GetUserAgent() != "antigravity/1.23.2 windows/amd64" {
